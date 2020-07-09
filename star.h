@@ -1,3 +1,6 @@
+// star.h
+//
+
 #pragma once
 
 #include <cmath>
@@ -33,11 +36,11 @@ struct TPoint
 
 class Star
 {
-   public:
+public:
     using dPoint = TPoint<double>;
     using Point  = TPoint<long>;
 
-   private:
+private:
     COLOR color     = RGB(0, 0, 0);
     dPoint center   = {};
     dPoint velocity = {};
@@ -46,7 +49,7 @@ class Star
     double ldist    = 0.0;
     double ratio    = 0.0;
 
-   public:
+public:
     Star(double x, double y, double vX, double vY, double angle, double rotate, double ldistance,
          double ratio = 0.36);
 

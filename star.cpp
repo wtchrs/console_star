@@ -1,3 +1,6 @@
+// star.cpp
+//
+
 #include "star.h"
 
 Star::Star(double x, double y, double vx, double vy, double angle, double rotate, double ldistance,

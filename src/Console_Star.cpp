@@ -5,31 +5,19 @@
 
 int main() {
     system("mode con cols=90 lines=46");
-    system("echo %PATH%");
 
-    Rect area = {5, 5, 40, 40};
+    Rect area    = {5, 5, 40, 40};
+    char str[14] = "*Stars!      ";
 
-    std::cout << "hello!";
+    for (int i = 0; i < 500; ++i) {
+        for (char c : str) putchar(c);
+    }
 
     Star center_star(20, 20, 0, 0, -90, 90, 20);
 
     gotoxy(0, 0);
 
-    for (int h = area.left; h < area.right; ++h) {
-        gotoxy(h * 2, area.top - 1);
-        putchar('-');
-        putchar('-');
-        gotoxy(h * 2, area.bottom);
-        putchar('-');
-        putchar('-');
-    }
-
-    for (int v = area.top; v < area.bottom; ++v) {
-        gotoxy(area.left * 2 - 1, v);
-        putchar('|');
-        gotoxy(area.right * 2, v);
-        putchar('|');
-    }
+    draw_border(area);
 
     while (true) {
         gotoxy(area.left * 2, area.top);

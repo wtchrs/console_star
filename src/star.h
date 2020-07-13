@@ -14,9 +14,9 @@ const double PI = std::acos(-1.0);
 #define DEG(rad) rad * 180.0 / PI
 
 #ifndef RGB
-#define RGB(r, g, b)                                                \
-    ((unsigned char)r | ((unsigned short)((unsigned char)g) << 8) | \
-     ((unsigned long)((unsigned char)b) << 16))
+#define RGB(r, g, b)                                              \
+    ((unsigned char)r | ((unsigned short)((unsigned char)g) << 8) \
+     | ((unsigned long)((unsigned char)b) << 16))
 #endif
 
 struct Rect
@@ -41,7 +41,7 @@ public:
     using Point  = TPoint<long>;
 
 private:
-    COLOR color     = RGB(0, 0, 0);
+    COLOR  color    = RGB(0, 0, 0);
     dPoint center   = {};
     dPoint velocity = {};
     double angle    = 0.0;

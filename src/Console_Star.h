@@ -8,7 +8,7 @@
 #include <cstdio>
 #include <iostream>
 
-#include "star.h"
+#include "lib/star.h"
 
 void gotoxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),

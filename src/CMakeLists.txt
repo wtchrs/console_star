@@ -3,4 +3,4 @@
 
 cmake_minimum_required (VERSION 3.8)
 
-add_executable (Console_Star "Console_Star.cpp" "star.cpp")
+add_executable (${OUTPUT_ELF} "Console_Star.cpp" "star.cpp")

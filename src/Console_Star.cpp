@@ -13,7 +13,7 @@ int main() {
         for (char c : str) putchar(c);
     }
 
-    Star center_star(20, 20, 0, 0, -90, 90, 20);
+    Star center_star(20, 20, 0, 0, -90, 60, 20);
 
     gotoxy(0, 0);
 
@@ -35,8 +35,8 @@ int main() {
             }
         }
 
-        Sleep(50);
-        center_star.move_for_time(0.05);
+        Sleep(200);
+        center_star.move_for_time(0.2);
     }
 
     return 0;

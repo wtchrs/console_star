@@ -105,7 +105,10 @@ bool Star::check_inside(dPoint2D point) const {
                            * (point.y - polygon.get()[i].y)
                            / (polygon.get()[i_next].y - polygon.get()[i].y)
                        + polygon.get()[i].x;
-            if (point.x < x) ++count;
+
+            if (point.x < x) {
+                ++count;
+            }
         }
     }
 

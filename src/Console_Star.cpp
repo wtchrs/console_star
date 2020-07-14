@@ -20,19 +20,21 @@ int main() {
     draw_border(area);
 
     while (true) {
-        gotoxy(area.left * 2, area.top);
-        for (int y = 0; y < 36; ++y) {
+        center_star.update_polygon();
+
+        for (int y = 0; y < 35; ++y) {
+            gotoxy(area.left * 2, y + area.top);
             for (int x = 0; x < 35; ++x) {
                 if (center_star.check_inside(
-                        Star::dPoint{static_cast<double>(x), static_cast<double>(y)})) {
+                        Star::dPoint2D{static_cast<double>(x), static_cast<double>(y)})) {
                     putchar('*');
                 } else {
                     putchar(' ');
                 }
                 putchar(' ');
             }
-            gotoxy(area.left * 2, y + area.top);
         }
+
         Sleep(50);
         center_star.move_for_time(0.05);
     }

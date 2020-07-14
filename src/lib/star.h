@@ -4,6 +4,7 @@
 #pragma once
 
 #include <cmath>
+#include <memory>
 #include <vector>
 
 using COLOR = unsigned long;
@@ -28,7 +29,7 @@ struct Rect
 };
 
 template <typename T>
-struct TPoint
+struct TPoint2D
 {
     T x;
     T y;
@@ -37,17 +38,19 @@ struct TPoint
 class Star
 {
 public:
-    using dPoint = TPoint<double>;
-    using Point  = TPoint<long>;
+    using dPoint2D = TPoint2D<double>;
+    using Point2D  = TPoint2D<long>;
 
 private:
-    COLOR  color    = RGB(0, 0, 0);
-    dPoint center   = {};
-    dPoint velocity = {};
-    double angle    = 0.0;
-    double rotate   = 0.0;
-    double ldist    = 0.0;
-    double ratio    = 0.0;
+    COLOR    color    = RGB(0, 0, 0);
+    dPoint2D center   = {};
+    dPoint2D velocity = {};
+    double   angle    = 0.0;
+    double   rotate   = 0.0;
+    double   ldist    = 0.0;
+    double   ratio    = 0.0;
+
+    std::shared_ptr<dPoint2D> polygon;
 
 public:
     Star(double x, double y, double vX, double vY, double angle, double rotate, double ldistance,
@@ -69,6 +72,8 @@ public:
         angle = fmod(angle, RAD(72.0));
     }
 
+    void update_polygon();
+
     double get_center_x() const { return center.x; }
 
     double get_center_y() const { return center.y; }
@@ -76,9 +81,9 @@ public:
     COLOR get_color() const { return color; }
 
     template <typename T>
-    std::vector<TPoint<T>> get_tpoints() const;
+    std::vector<TPoint2D<T>> get_tpoints() const;
 
-    std::vector<Point> get_points() const;
+    std::vector<Point2D> get_points() const;
 
-    bool check_inside(dPoint point) const;
+    bool check_inside(dPoint2D point) const;
 };

@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <array>
 #include <cmath>
 #include <memory>
 #include <vector>
@@ -50,7 +51,7 @@ private:
     double   ldist    = 0.0;
     double   ratio    = 0.0;
 
-    std::shared_ptr<dPoint2D> polygon;
+    std::array<dPoint2D, 10> polygon;
 
 public:
     Star(double x, double y, double vX, double vY, double angle, double rotate, double ldistance,
@@ -81,9 +82,9 @@ public:
     COLOR get_color() const { return color; }
 
     template <typename T>
-    std::vector<TPoint2D<T>> get_tpoints() const;
+    std::array<TPoint2D<T>, 10> get_tpoints() const;
 
-    std::vector<Point2D> get_points() const;
+    std::array<Point2D, 10> get_points() const { return this->get_tpoints<long>(); }
 
     bool check_inside(dPoint2D point) const;
 };

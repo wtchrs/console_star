@@ -60,11 +60,16 @@ public:
     Star(COLOR color, double x, double y, double vX, double vY, double angle, double rotate,
          double ldistance, double ratio = 0.36);
 
-    ~Star() {}
+    ~Star() {
+    }
 
-    void neg_velocity_x() { velocity.x = -velocity.x; }
+    void neg_velocity_x() {
+        velocity.x = -velocity.x;
+    }
 
-    void neg_velocity_y() { velocity.y = -velocity.y; }
+    void neg_velocity_y() {
+        velocity.y = -velocity.y;
+    }
 
     void move_for_time(const double time) {
         center.x += velocity.x * time;
@@ -75,16 +80,24 @@ public:
 
     void update_polygon();
 
-    double get_center_x() const { return center.x; }
+    double get_center_x() const {
+        return center.x;
+    }
 
-    double get_center_y() const { return center.y; }
+    double get_center_y() const {
+        return center.y;
+    }
 
-    COLOR get_color() const { return color; }
+    COLOR get_color() const {
+        return color;
+    }
 
     template <typename T>
     std::array<TPoint2D<T>, 10> get_tpoints() const;
 
-    std::array<Point2D, 10> get_points() const { return this->get_tpoints<long>(); }
+    std::array<Point2D, 10> get_points() const {
+        return this->get_tpoints<long>();
+    }
 
     bool check_inside(dPoint2D point) const;
 };

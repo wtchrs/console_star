@@ -33,4 +33,6 @@ void draw_border(int left, int top, int right, int bottom) {
     }
 }
 
-inline void draw_border(Rect area) { draw_border(area.left, area.top, area.right, area.bottom); }
+inline void draw_border(Rect area) {
+    draw_border(area.left, area.top, area.right, area.bottom);
+}

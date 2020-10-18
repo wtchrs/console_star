@@ -1,42 +1,37 @@
-﻿// Console_Star.cpp
-//
+// Console_Star.cpp
 
 #include "Console_Star.h"
 
 int main() {
-    system("mode con cols=90 lines=46");
+    system("clear");
 
-    Rect area    = {5, 5, 40, 40};
-    char str[14] = "*Stars!      ";
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 
-    for (int i = 0; i < 500; ++i) {
-        for (char c : str) putchar(c);
-    }
+    Rect area = {5, 5, w.ws_col / 2 - 5, w.ws_row - 5};
 
     Star center_star(20, 20, 0, 0, -90, 60, 20);
-
-    gotoxy(0, 0);
 
     draw_border(area);
 
     while (true) {
         center_star.update_polygon();
 
-        for (int y = 0; y < 35; ++y) {
+        for (int y = 0; y < area.bottom - area.top; ++y) {
             gotoxy(area.left * 2, y + area.top);
-            for (int x = 0; x < 35; ++x) {
+            for (int x = 0; x < area.right - area.left; ++x) {
                 if (center_star.check_inside(
                         Star::dPoint2D{static_cast<double>(x), static_cast<double>(y)})) {
-                    putchar('*');
+                    printf("%s", "* ");
                 } else {
-                    putchar(' ');
+                    printf("%s", "  ");
                 }
-                putchar(' ');
             }
         }
+        printf("\n");
 
-        Sleep(200);
-        center_star.move_for_time(0.2);
+        sleep(1);
+        center_star.move_for_time(1);
     }
 
     return 0;

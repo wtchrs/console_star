@@ -1,5 +1,4 @@
 // star.cpp
-//
 
 #include "star.h"
 
@@ -42,12 +41,12 @@ template <typename T>
 std::array<TPoint2D<T>, 10> Star::get_tpoints() const {
     std::array<TPoint2D<T>, 10> result;
 
-    for (auto elem = result.begin(), first = polygon.cbegin(), last = polygon.cend(); first != last;
-         ++elem, ++first) {
+    auto elem = result.begin();
+    for (auto first = polygon.cbegin(), last = polygon.cend(); first != last; ++elem, ++first) {
         *elem = TPoint2D<T>{static_cast<T>(first->x), static_cast<T>(first->y)};
     }
 
-    return std::move(result);
+    return result;
 }
 
 template <>

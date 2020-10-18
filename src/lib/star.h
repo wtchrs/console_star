@@ -1,5 +1,4 @@
 // star.h
-//
 
 #pragma once
 

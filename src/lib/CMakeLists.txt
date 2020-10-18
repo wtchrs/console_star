@@ -1,6 +1,5 @@
-# CMakeLists.txt
 # src/lib directory
 
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required(VERSION 3.8)
 
-add_library (star STATIC star.cpp)
+add_library(star STATIC star.cpp)
